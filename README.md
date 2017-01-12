@@ -1,0 +1,2 @@
+# Instagram-Bot
+Bot that will visit Instagram for a specific TAG page, for example, https://www.instagram.com/explore/tags/nails/, it will open the first item, take a screenshot, and go to the next, in the next it will get the source link for the item, image or video, and save it in a specific directory, it will go on for 20 item or until there no more items in the page, detection of the bot is uncertain, but it has been tested for long time and still nothing. FOR EDUCATION PURPOSES ONLY I AM NOT RESPONSABLE FOR HOW SOMEONE OR SOMETHING USE THIS SCRIPT
