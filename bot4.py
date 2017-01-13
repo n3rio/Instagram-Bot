@@ -24,103 +24,8 @@ global cnT
 global numero_visitas
 global success
 
-def detcTrampa(driver):
-	print "[+] Buscando Trampas [+]"
-	try:
-		trampa = driver.find_element_by_xpath("//div[@class='recaptcha-checkbox-checkmark']")
-		d_Trampa = ActionChains(driver)
-		d_Trampa.move_to_element(trampa)
-		d_Trampa.click(trampa)
-		d_Trampa.perform()
-		t_dT = random.randrange(40,120)
-		time.sleep(t_dT)
-	except Exception as e:
-		print "[+] No se encontraron trampas - Camino inseguro [+]"
-
-def objFinder(driver):
-
-	print "[+] Buscando Paginas Principales [+]"
-
-	try:
-		pags_principales = driver.find_elements_by_class_name("linkspacer")
-		for i in pags_principales:
-			# l_pp = lista de hrefs de paginas principales
-			l_pp = i.get_attribute("href")
-		
-	except Exception as e:
-		print "[+] No se encontraron paginas principales [+]"
-		# EL PROGRAMA DEBERIA TERMINAR AQUI
-
-	print "[+] Buscando Cantidad de Paginas [+]"
-
-	try:
-		n_pags = driver.find_elements_by_class_name("page-spacer")
-		for j in n_pags:
-			# l_np = lista de paginacion
-			l_np = j.get_attribute("href")
-
-	except Exception as e:
-		print "[+] No se encontraro la cantidad de paginas [+]"
-
-	print "[+] Buscando Items [+]"
-
-	try:
-		items = driver.find_elements_by_xpath("//a[starts-with(@href, './?page=vote&vote=')]")
-	except Exception as e:
-		print "[+] No se encontraron items [+]"
-
-def attackControl(driver):
-
-	print "[+] Buscando Paginas Principales [+]"
-
-	try:
-		pags_principales = driver.find_elements_by_class_name("linkspacer")
-		for i in pags_principales:
-			# l_pp = lista de hrefs de paginas principales
-			l_pp = i.get_attribute("href")
-		
-	except Exception as e:
-		print "[+] No se encontraron paginas principales [+]"
-		# EL PROGRAMA DEBERIA TERMINAR AQUI
-
-	print "[+] Buscando Cantidad de Paginas [+]"
-
-	try:
-		n_pags = driver.find_elements_by_class_name("page-spacer")
-
-		for j in n_pags:
-			# l_np = lista de paginacion
-			l_np = j.get_attribute("href")
-
-	except Exception as e:
-		print "[+] No se encontraro la cantidad de paginas [+]"
-
-	print "[+] Buscando Items [+]"
-
-	try:
-
-		items = driver.find_elements_by_xpath("//a[starts-with(@href, './?page=vote&vote=')]")
-
-	except Exception as e:
-
-		print "[+] No se encontraron items [+]"
-
-	for pag in pags_principales:
-		go_Pp = ActionChains(driver)
-		go_Pp.move_to_element(pag)
-		t01 = random.randrange(40,80)
-		time.sleep(t01)
-		go_Pp.click(pag)
-		go_Pp.perform()
-		t02 = random.randrange(40,80)
-		time.sleep(t02)
-
-
-
-
-
-
-	'''
+def initAttack(driver):
+	
 	print "[+] Ataque a SubObjetivo [+]"
 	pyautogui.moveTo(308,514,2)
 	pyautogui.click()
@@ -162,12 +67,11 @@ def attackControl(driver):
 		t2 = random.randrange(120,140)
 		time.sleep(t2)
 		i = i - 1
-	'''
 
 def initCon(target):
 	driver = webdriver.Firefox()
 	print "[+] Abriendo navegador - Iniciando ataque a objetivo. [+]"
-	driver.get("http://" + target)
+	driver.get("https://" + target)
 
 	print "[+] Maximizando ventada [+]"
 
@@ -177,7 +81,7 @@ def initCon(target):
 
 	print "[+] OBJETIVO CARGADO - INICIANDO ATAQUE [+]"
 
-	attackControl(driver)
+	initAttack(driver)
 
 def main(target):
     
